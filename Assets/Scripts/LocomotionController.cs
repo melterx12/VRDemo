@@ -8,6 +8,8 @@ public class LocomotionController : MonoBehaviour
     public XRController leftTeleportRay, rightTeleportRay;
     public InputHelpers.Button activationButton;
     public float activationThreshold = 0.1f;
+    public bool leftTeleportEnabled { get; set; } = true;
+    public bool rightTeleportEnabled { get; set; } = true;
 
     private bool leftActive, rightActive;
 
@@ -21,9 +23,9 @@ public class LocomotionController : MonoBehaviour
     void Update()
     {
         if (leftTeleportRay)
-            leftActive = CheckRayActivated(leftTeleportRay);
+            leftActive = leftTeleportEnabled && CheckRayActivated(leftTeleportRay);
         if (rightTeleportRay)
-            rightActive = CheckRayActivated(rightTeleportRay);
+            rightActive = rightTeleportEnabled && CheckRayActivated(rightTeleportRay);
 
         if (leftActive && !rightActive)
         {
