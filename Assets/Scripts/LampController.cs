@@ -9,21 +9,18 @@ public class LampController : MonoBehaviour
 
     private Material lightMat;
 
-    void Start()
+    void Awake()
     {
         lightMat = GetComponent<MeshRenderer>().materials[1];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ToggleLamp(bool state)
     {
-        var dist = Vector3.Distance(socket.transform.position, transform.position);
-
-        if (dist < 0.15f)
+        if (state)
         {
             lightMat.EnableKeyword("_EMISSION");
             lightSource.SetActive(true);
-        } 
+        }
         else
         {
             lightMat.DisableKeyword("_EMISSION");

@@ -12,13 +12,13 @@ public class XRGrabInteractableExtended : XRGrabInteractable
     {
         base.OnSelectEntering(args);
 
-        if (selectingInteractor.tag.Equals("HandLeft"))
+        if (attachTransform != null && selectingInteractor.tag.Equals("HandLeft"))
             attachTransform.localPosition += LeftHandAttachOffset;
     }
 
     protected override void OnSelectExiting(SelectExitEventArgs args)
     {
-        if (selectingInteractor.tag.Equals("HandLeft"))
+        if (attachTransform != null && selectingInteractor.tag.Equals("HandLeft"))
             attachTransform.localPosition -= LeftHandAttachOffset;
 
         base.OnSelectExiting(args);
